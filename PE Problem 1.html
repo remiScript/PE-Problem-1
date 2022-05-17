@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function findMult3And5(a) {
+            // empty array where multiples will be stored
+            let multOf3And5 = [];
+
+            // start counting up by 3s
+            let i = 1;
+
+            do {
+                multOf3And5.push(i * 3);
+                i++;
+            }
+
+            // and stop when the solution is higher than a
+            while ((i*3) <= a);
+
+            // reset i and repeat the process with 5s
+            i = 1;
+
+            do {
+                multOf3And5.push(i * 5);
+                i++;
+            }
+
+            while ((i*5) <= a);
+
+            // sort in ascending order
+            multOf3And5.sort((a, b) => a - b);
+
+            // trim the duplicates
+            set35 = new Set(multOf3And5);
+
+            // bring it back to an array
+            multOf3And5 = Array.from(set35);
+
+            // add all of the values together
+            const numSum = multOf3And5.reduce((preValue, curValue) => preValue + curValue, 0);
+
+            return numSum;
+        }
+    </script>
+</body>
+</html>
