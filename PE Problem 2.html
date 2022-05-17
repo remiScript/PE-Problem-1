@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fibo(a) {
+            // initialize first two numbers in sequence
+            let seq = [1, 2];
+            let sum = 0;
+            // add last 2 numbers in array together, then add new value equal to their sum
+            do {
+                sum = seq[seq.length - 1] + seq[seq.length - 2];
+                seq.push(sum)
+            } 
+            while (seq[seq.length - 1] < a)
+
+            // our code runs 1 too many times, need to pop off last element
+            if (seq[seq.length - 1] >= a) {
+                seq.pop();
+            }
+
+            // remove all odd numbers
+            let even = seq.filter(num => num % 2 === 0);
+
+            // create a variable that is the sum of the even array
+            let result = even.reduce((a, b) => a + b, 0);
+
+            // log and return values
+            console.log(seq);
+            console.log(even);
+            return result;
+        }
+    </script>
+</body>
+</html>
