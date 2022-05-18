@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function largestPrimeFactor(x){
+            // find factors
+            function findFactors(a){
+                let f = [];
+                // math trick I learned, iterate up until the square root
+                for(i = 0; i <= Math.sqrt(a); i++) {
+                    //  For each factor, push the factor AND our number set divided by the factor
+                    // Which gives us the other factor!
+                    if (a % i == 0) {
+                        f.push(i);
+                        f.push(a/i);
+                    }
+                }
+                return f;
+            }
+            let factors = findFactors(x);
+
+            // check if those factors are prime: Do those factors have more
+            // than 2 factors themselves? If so, they aren't prime!
+            function isPrime(value) {
+               let f2 = findFactors(value);
+               if (f2.length == 2) {
+                   return true;
+               }
+            }
+
+            // Now we sort the array of prime factors
+            let prime = factors.filter(isPrime);
+            prime = prime.sort((a, b) => {
+                if(a < b){
+                    return -1
+                } else if(a > b){
+                    return 1
+                } else {
+                    return 0
+                }
+            });
+            console.log(prime)
+
+            // largest number is our answer
+            return "Largest Prime Factor: " + prime[prime.length - 1];
+        }
+    </script>
+</body>
+</html>
