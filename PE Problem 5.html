@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function smallestMultiple(x) {
+            //we need to find a number that is a multiple of all numbers between 1 and x            
+            //in this case, x is 20, and the important figures are hard coded
+            //the important figures represent the numbers that, if you find the smallest
+            //common multiple of them, you also have the SCM of every number between 1
+            //and x. ex: any number that is a multiple of 20, is also a multiple of 1, 2, 4, 5, and 10
+            let impFigs = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+            //starting at the largest number (num), we check if num is a multiple of each number in our
+            //impFigs array. We increment by the largest number!
+            for(i = 20; i < 300000000; i += 20) {
+                if(
+                    (i % 11 == 0) && 
+                    (i % 12 == 0) && 
+                    (i % 13 == 0) && 
+                    (i % 14 == 0) && 
+                    (i % 15 == 0) && 
+                    (i % 16 == 0) && 
+                    (i % 17 == 0) && 
+                    (i % 18 == 0) && 
+                    (i % 19 == 0) && 
+                    (i % 20 == 0)) {
+                        console.log(i);
+                    }
+            }
+        }
+        smallestMultiple();
+        console.log('hmm');
+    </script>
+</body>
+</html>
